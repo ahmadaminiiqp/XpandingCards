@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ExpandingCard</title>
+    <link rel="stylesheet" href="Css/Style.css">
+    <script src="Lib/JQuery/jquery-3.6.0.min.js"></script>
+</head>
+<body id="body">
+    
+    <div id="s">
+        <img src="media/img/4.jpg" alt="">
+    </div>
+
+    <div class="expanding-card">
+        <div class="card" id="card" data-value="1"><img src="media/img/1.jpg" alt=""></div>
+        <div class="card" id="card" data-value="2"><img src="media/img/2.jpg" alt=""></div>
+    <div class="card" id="card" data-value="3"><img src="media/img/3.jpg" alt=""></div>
+    <div class="card" id="card" data-value="1"><img src="media/img/5.jpg" alt=""></div>
+    <div class="card" id="card" data-value="2"><img src="media/img/6.jpg" alt=""></div>
+    <div class="card" id="card" data-value="3"><img src="media/img/7.jpg" alt=""></div>
+    <div class="active" id="card" data-value="4"><img src="media/img/4.jpg" alt=""></div>
+</div>
+
+<div class="opacity">
+    Hover For Hide
+</div>
+
+<script src="Lib/vanila-tilt/vanilla-tilt.js"></script>
+<script>
+
+        $(document).on('click','#card',function () {
+            //alert("Hello")
+        var own = $(this).attr("data-value");
+        var twe = $(this).attr("class");
+        var background = $(this).html();
+
+
+       if(twe == "card"){
+            $('.active').removeClass('active').addClass('card');
+            $(this).addClass('active');
+            $(this).removeClass('card');
+
+            $('#s').html(background);
+        }
+
+
+        VanillaTilt.init(document.querySelector(".expanding-card"),{
+            max: 2,
+            speed: 1000,
+        });
+
+        VanillaTilt.init(document.querySelectorAll(".active"),{
+            max: 8,
+            speed: 900,
+        });
+
+        // VanillaTilt.init(document.querySelector(".test"),{
+        //     max: 2,
+        //     speed: 100
+        // })
+    });
+    
+    $('.opacity').hover(function () {
+            $('.expanding-card').css('opacity','0%');
+            $('.opacity').css('opacity','0%');
+    });
+    $('.opacity').mouseleave(function () {
+        $('.opacity').css('opacity','100%');
+        $('.expanding-card').css('opacity','100%');
+    });
+
+
+    
+</script>
+</body>
+</html>
